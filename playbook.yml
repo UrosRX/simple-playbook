@@ -4,7 +4,7 @@
   tasks:
     - name: Create DB user
       community.mysql.mysql_user:
-        user: admin
+        name: admin
         password: "{{ db_admin_password }}"
 
     - name: Create a new Linux user

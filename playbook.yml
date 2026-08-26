@@ -1,1 +1,15 @@
-...
+---
+- name: Simple Ansible Playbook Example
+  hosts: all
+  tasks:
+    - name: Create DB user
+      community.mysql.mysql_user:
+        user: admin
+        password: "{{ db_admin_password }}"
+
+    - name: Create a new Linux user
+      ansible.builtin.user:
+        name: new_linux_user
+        state: present
+        password: "{{ my_password }}"
+      no_log: false

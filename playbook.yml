@@ -10,7 +10,7 @@
     - name: Create a new Linux user
       user:
         name: new_linux_user
-        state:
+        state: present
         password: "{{ my_password }}"
       no_log: false
 

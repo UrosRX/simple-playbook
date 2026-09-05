@@ -3,19 +3,19 @@
   hosts: all
   tasks:
     - name: Create DB user
-      mysql_user:
-        user: admin
+      community.mysql.mysql_user:
+        name: admin
         password: "{{ db_admin_password }}"
 
     - name: Create a new Linux user
-      user:
+      ansible.builtin.user:
         name: new_linux_user
         state: present
         password: "{{ my_password }}"
       no_log: false
 
     - name: Ensure that the server certificate belongs to the specified private key
-      community.crypto.openssl_certificate:
+      community.crypto.x509_certificate:
         path: "{{ config_path }}/certificates/server.crt"
         privatekey_path: "{{ config_path }}/certificates/server.key"
         provider: acme
